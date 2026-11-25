@@ -1,10 +1,22 @@
 @font-face {
-  font-family: Inter;
+  font-family: "Google Sans";
   font-style: normal;
-  font-weight: 100 900;
+  font-weight: 400 700;
   font-display: swap;
-  src: url("static/fonts/inter-latin.woff2") format("woff2");
+  src: url("static/fonts/google-sans-latin.woff2") format("woff2");
 }
+@font-face {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("static/fonts/noto-sans-latin.woff2") format("woff2");
+}
+body, .teaser { font-family: "Noto Sans", sans-serif; }
+.publication-title, .publication-authors { font-family: "Google Sans", sans-serif !important; }
+.publication-title { font-weight: 600 !important; }
+.publication-authors, .publication-authors a { font-weight: 400; }
+.title.is-3 { font-family: "Noto Sans", sans-serif !important; }
 :root {
   --primary-color: #8c1732;
   --primary-hover: #701329;
@@ -26,19 +38,3 @@ pre#bibtex-code { white-space: pre-wrap; overflow-wrap: anywhere; }
   h1.publication-title { font-size: 2.15rem !important; }
   .teaser .hero-body { padding-top: 0; }
 }
-.packing {margin:0;padding:1.25rem;border:1px solid #e3dadc;border-radius:.35rem;background:#fcf9fa}
-.packing figcaption {font:1.18rem/1.2 Inter, sans-serif;letter-spacing:-.025em}
-.maps {display:flex;justify-content:space-between;margin:1.4rem .2rem 0}
-.ch0 {--channel:#8c1732}
-.ch1 {--channel:#657998}
-.ch2 {--channel:#b87346}
-.ch3 {--channel:#537668}
-.channel {display:grid;justify-items:center;gap:.25rem}
-.channel i {display:block;width:2.2rem;height:2.2rem;transform:skewY(-8deg);background-color:var(--channel);background-image:repeating-linear-gradient(0deg,transparent 0 22%,#fff9 22% 25%),repeating-linear-gradient(90deg,transparent 0 22%,#fff9 22% 25%)}
-.channel b {font:.83rem ui-monospace,monospace;color:var(--channel)}
-.wire {position:relative;height:1.3rem;border-top:1px solid #cbbfc3;margin:.35rem 1.3rem 0}
-.wire span {position:absolute;left:50%;top:0;height:100%;border-left:1px solid #cbbfc3}
-.coeffs {display:flex;gap:.3rem}
-.coeffs div {display:flex;flex:1;gap:1px}
-.coeffs i {display:block;flex:1;height:1.2rem;background:var(--channel)}
-.packing p {font-size:.85rem;line-height:1.45;margin:.8rem 0 0;color:var(--text-secondary)}
