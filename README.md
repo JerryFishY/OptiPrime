@@ -11,7 +11,7 @@
 <p align="center">
   <a href="https://arxiv.org/abs/2609.16898"><img alt="Paper on arXiv" src="assets/badges/paper.svg"></a>
   <a href="https://jerryfishy.github.io/OptiPrime/"><img alt="Project Page" src="assets/badges/project.svg"></a>
-  <a href="https://github.com/JerryFishY/SEC-PPDL/tree/b986671362e8e6e244ca80a81a0ba6fbccf1c976/Experiments/OptiPrime"><img alt="Code in SEC-PPDL" src="assets/badges/code.svg"></a>
+  <a href="https://github.com/PKU-SEC-Lab/SEC-PPDL-LIB"><img alt="Code in SEC-PPDL" src="assets/badges/code.svg"></a>
   <a href="https://jerryfishy.github.io/"><img alt="Jiangrui Yu’s homepage" src="assets/badges/homepage.svg"></a>
   <a href="https://mengli.me/"><img alt="PKU SEC Lab page" src="assets/badges/lab.svg"></a>
 </p>
