@@ -21,8 +21,8 @@ for (const button of networkButtons) {
     const network = button.dataset.network;
     const resume = !video.paused;
     video.pause();
-    video.poster = `media/${network}-poster.jpg`;
-    video.src = `media/${network}-rn18.mp4`;
+    video.poster = `media/${network}-poster.jpg?v=20x`;
+    video.src = `media/${network}-rn18.mp4?v=20x`;
     document.querySelector('#network-setting').textContent = settings[network];
     for (const other of networkButtons) other.setAttribute('aria-pressed', String(other === button));
     if (resume) video.play().catch(() => {});
