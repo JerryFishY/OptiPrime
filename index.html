@@ -73,7 +73,7 @@
       <video id="replay" controls playsinline muted preload="metadata" poster="media/lan-poster.jpg?v=20x" aria-describedby="replay-caption">
         <source src="media/lan-rn18.mp4?v=20x" type="video/mp4">
       </video>
-      <p class="measurement-caption" id="replay-caption">16 ImageNetV2 images · 16 CPU threads per party · 20× playback<br>
+      <p class="measurement-caption" id="replay-caption">16 ImageNetV2 images · AMD EPYC 9J14 · 16 CPU threads per party · 20× playback<br>
         <span id="network-setting">LAN · 3,072 Mbit/s per direction · 0.3 ms RTT</span></p>
       <noscript><a href="media/wan-rn18.mp4?v=20x">Watch the WAN replay</a></noscript>
     </div>
@@ -88,7 +88,7 @@
   <section class="paper-section" id="communication" aria-labelledby="results"><div class="paper-width">
     <h2 id="results" class="title is-3 has-text-centered">Network Communication Reduction</h2>
     <figure aria-describedby="traffic-caption">
-      <figcaption id="traffic-caption"><a href="https://github.com/JerryFishY/OptiPrime/blob/main/results/communication.md">Measured traffic per inference</a>, including OT preprocessing (GB). Heights are relative to Cheetah within each model.</figcaption>
+      <figcaption id="traffic-caption"><a href="https://github.com/JerryFishY/SEC-PPDL/blob/426656bf9f7b8691a11a60a8de1cdbbf7c78e238/Experiments/OptiPrime/measurements/communication.md">Measured traffic per inference</a>, including OT preprocessing (GB). Heights are relative to Cheetah within each model.</figcaption>
       <div class="chart-legend"><span class="baseline">Cheetah</span><span class="optiprime">OptiPrime</span></div>
       <ul class="traffic-chart">
 <li><span class="reduction">95.6% less</span><div class="bar-pair">
