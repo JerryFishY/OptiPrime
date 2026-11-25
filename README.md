@@ -8,6 +8,12 @@ MICRO 2026
 
 OptiPrime introduces OptiEncode, a homomorphic convolution protocol that packs output channels to reduce ciphertext communication during private inference. The CPU and GPU implementations are integrated into SEC-PPDL. [Paper](https://arxiv.org/abs/2609.16898) · [Implementation][implementation] · [Experiment guide][experiments]
 
+## Results reported in the paper
+
+The MICRO 2026 paper reports end-to-end speedups over Cheetah of up to **5.7× on CPUs** and **4.2× with the HE accelerator**. Across the evaluated networks, OptiEncode uses **11–59% of Cheetah’s communication** and **7–46% of its output ciphertext count**. [Paper, Sections V-B and V-C](https://arxiv.org/html/2609.16898v1#S5.SS2)
+
+The SEC-PPDL implementation also has a separate W4A8 evaluation on CPU and GPU. [Measured latency, communication, and accuracy](results/sec-ppdl.md)
+
 ## Run the convolution tests
 
 Check out the SEC-PPDL revision linked below and follow its [dependency setup][dependencies]. From the SEC-PPDL repository root, build and test the CPU operator.
