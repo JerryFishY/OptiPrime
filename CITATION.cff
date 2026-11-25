@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use OptiEncode, please cite the OptiPrime paper listed below."
+title: "OptiPrime research artifact"
+authors:
+  - family-names: Yu
+    given-names: Jiangrui
+repository-code: "https://github.com/JerryFishY/OptiPrime"
+preferred-citation:
+  type: conference-paper
+  title: "OptiPrime: Optimizing Private Inference through Protocol-Hardware Co-design"
+  authors:
+    - family-names: Yu
+      given-names: Jiangrui
+    - family-names: Yu
+      given-names: Ye
+    - family-names: Chen
+      given-names: Si
+    - family-names: Lin
+      given-names: Chenqi
+    - family-names: Zeng
+      given-names: Wenxuan
+    - family-names: Fan
+      given-names: Junfeng
+    - family-names: Gao
+      given-names: Mingyu
+    - family-names: Li
+      given-names: Meng
+  conference:
+    name: "59th IEEE/ACM International Symposium on Microarchitecture (MICRO)"
+  year: 2026
+  url: "https://arxiv.org/abs/2609.16898"
