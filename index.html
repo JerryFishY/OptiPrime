@@ -1,71 +1,157 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#8c1732">
-<meta name="description" content="OptiPrime at MICRO 2026. Explore the channel encoding behind private inference and watch a recorded two-party ResNet-18 comparison.">
-<title>OptiPrime · MICRO 2026</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#8c1732">
+  <meta name="description" content="OptiPrime, MICRO 2026. Private convolution, measured two-party inference, and the SEC-PPDL implementation.">
+  <title>OptiPrime · MICRO 2026</title>
+  <link rel="canonical" href="https://jerryfishy.github.io/OptiPrime/">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="page.js" defer></script>
 </head>
 <body>
-<header class="mast"><div class="wrap nav"><a class="brand" href="#top"><i aria-hidden="true"></i>OptiPrime</a><nav aria-label="Page navigation"><a href="#demo">Demo</a><a href="#results">Results</a><a href="#citation">Cite</a></nav></div></header>
-<main id="top" class="wrap">
-<section class="hero" aria-labelledby="title">
-<div class="hero-copy"><p class="venue">MICRO 2026 <span>·</span> Computer architecture</p>
-<h1 id="title">OptiPrime</h1>
-<p class="subtitle">Optimizing Private Inference through<br class="desktop"> Protocol-Hardware Co-design</p>
-<p class="authors"><a href="https://jerryfishy.github.io/">Jiangrui Yu</a>, Ye Yu, Si Chen, Chenqi Lin, Wenxuan Zeng, Junfeng Fan, Mingyu Gao, and Meng Li</p>
-<div class="actions"><a class="primary" href="https://arxiv.org/pdf/2609.16898">Read paper</a><a href="https://github.com/JerryFishY/OptiPrime">GitHub</a><a href="#demo">Watch demo</a></div>
-</div>
-<figure class="packing" aria-label="Illustration of four output channels packed into one ciphertext">
+<main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">OptiPrime: Optimizing Private Inference through Protocol-Hardware Co-design</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><a href="https://jerryfishy.github.io/">Jiangrui Yu</a>,</span>
+              <span class="author-block">Ye Yu,</span>
+              <span class="author-block">Si Chen,</span>
+              <span class="author-block">Chenqi Lin,</span>
+              <span class="author-block">Wenxuan Zeng,</span>
+              <span class="author-block">Junfeng Fan,</span>
+              <span class="author-block">Mingyu Gao,</span>
+              <span class="author-block">Meng Li</span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">59th IEEE/ACM International Symposium on Microarchitecture (MICRO 2026)</span>
+            </div>
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a class="external-link button is-normal is-rounded is-dark" href="https://arxiv.org/pdf/2609.16898">
+                    <span class="icon"><img src="static/icons/file-pdf.svg" width="16" height="16" alt=""></span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a class="external-link button is-normal is-rounded is-dark" href="https://github.com/JerryFishY/OptiPrime">
+                    <span class="icon"><img src="static/icons/github.svg" width="16" height="16" alt=""></span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a class="external-link button is-normal is-rounded is-dark" href="#demo">
+                    <span class="icon"><img src="static/icons/play.svg" width="16" height="16" alt=""></span>
+                    <span>Demo</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a class="external-link button is-normal is-rounded is-dark" href="https://github.com/JerryFishY/OptiPrime/blob/main/results/sec-ppdl.md">
+                    <span class="icon"><img src="static/icons/chart-bar.svg" width="16" height="16" alt=""></span>
+                    <span>Measurements</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="hero teaser" id="demo" aria-label="Recorded inference comparison">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video id="replay" controls playsinline muted preload="metadata" poster="media/replay-poster.jpg" aria-label="Side-by-side ResNet-18 timing replay at five times speed" aria-describedby="timing"><source src="media/rn18-replay.mp4" type="video/mp4">Your browser can play the <a href="media/rn18-replay.gif">animated GIF</a>.</video>
+        <h2 class="subtitle has-text-centered" id="timing">
+          <strong>Encrypted ResNet-18 at 5× playback.</strong> Each photo appears when its secure inference finishes.
+          Cheetah took 297.74 seconds for four photos and OptiPrime took 38.40 seconds, including per-image preprocessing.
+        </h2>
+        <p class="has-text-centered run-settings">Exact W4A8 inference · CPU · 16 threads per party · LAN, 3,072 Mbit/s per direction and 0.3 ms RTT</p>
+        <details><summary>Timing, image credits and downloads</summary><div class="details-content">
+<p>The two protocols ran separately on the same AMD EPYC 9J14 host. Both clocks start at zero in the replay. The four inferences total 297.74 seconds for Cheetah and 38.40 seconds for OptiPrime. Tile labels show the model’s predictions. Each completion includes online inference through secure argmax and any per-image preprocessing. Model setup, key exchange and opening the outputs for verification are outside the timers. The replay uses the per-image measurements at one fifth of their recorded duration.</p>
+<div class="table-wrap"><table class="table is-fullwidth is-striped"><caption>Time per encrypted image in seconds, before playback acceleration</caption><thead><tr><th scope="col">Input photo</th><th scope="col">Cheetah</th><th scope="col">OptiPrime</th></tr></thead><tbody><tr><th scope="row">Chelsea the cat</th><td>74.99</td><td>9.18</td></tr><tr><th scope="row">Coffee</th><td>74.23</td><td>10.89</td></tr><tr><th scope="row">Rocket launch</th><td>73.52</td><td>10.68</td></tr><tr><th scope="row">Camera</th><td>74.99</td><td>7.64</td></tr><tr><th scope="row">All four</th><td>297.74</td><td>38.40</td></tr></tbody></table></div>
+<p>Cheetah uses online IKNP and a 60-bit work ring. OptiPrime uses OptiEncode with compact ciphertext output, preprocessed Ferret OT and a 20-bit work ring. Both use the same quantized weights and exact nonlinear operators. These four photos illustrate latency. Classification accuracy is evaluated separately on ImageNetV2.</p>
+<p>Photos from scikit-image: Chelsea by Stefan van der Walt, camera by Lav Varshney, coffee by Rachel Michetti, and the rocket launch by SpaceX. <a href="https://scikit-image.org/docs/stable/api/skimage.data.html">Image credits</a> · <a href="media/rn18-replay.gif">Animated GIF</a> · <a href="media/rn18-replay.mp4">MP4</a> · <a href="replay.json">Recorded timings</a></p>
+</div></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hero is-light" id="results" aria-labelledby="overview">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3" id="overview">Paper overview</h2>
+          <div class="content has-text-justified">
+            <p>Private neural network inference combines homomorphic encryption with multi-party computation.
+            Accelerating the encrypted arithmetic leaves a second cost: transmitting the output ciphertexts.
+            OptiEncode packs convolution output channels into fewer ciphertexts. OptiPrime pairs this encoding
+            with plaintext weight compression and a hardware dataflow that reuses intermediate ciphertexts.</p>
+            <p>The paper reports up to <strong>5.7× speedup on CPUs</strong> and <strong>4.2× with an HE accelerator</strong>
+            over Cheetah. The video above measures the SEC-PPDL software implementation.
+            <a href="https://arxiv.org/html/2609.16898v1#S5">Read the paper evaluation.</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="implementation">
+    <div class="container is-max-desktop">
+      <div class="columns is-vcentered is-variable is-6">
+        <div class="column content">
+          <h2 class="title is-3" id="implementation">OptiEncode in SEC-PPDL</h2>
+          <p>Use the C++ convolution operator directly, or run a quantized network on CPU or GPU.
+          The experiment guide covers model export, exact and approximate inference, and checking logits against the integer reference.</p>
+          <ul>
+            <li><a href="https://github.com/JerryFishY/SEC-PPDL/blob/b986671362e8e6e244ca80a81a0ba6fbccf1c976/Experiments/OptiPrime/README.md">Run the experiments</a></li>
+            <li><a href="https://github.com/JerryFishY/SEC-PPDL/blob/b986671362e8e6e244ca80a81a0ba6fbccf1c976/Layer/LinearLayer/include/LinearLayer/ConvOptiEncode.h">Use the convolution operator</a></li>
+            <li><a href="https://github.com/JerryFishY/OptiPrime/blob/main/results/sec-ppdl.md">View latency, communication and ImageNetV2 accuracy</a></li>
+          </ul>
+        </div>
+        <div class="column is-two-fifths"><figure class="packing" aria-label="Illustration of four output channels packed into one ciphertext">
 <figcaption>How OptiEncode packs an output</figcaption>
 <div class="maps" aria-label="Four output feature maps"><div class="channel ch0"><i></i><b>C0</b></div><div class="channel ch1"><i></i><b>C1</b></div><div class="channel ch2"><i></i><b>C2</b></div><div class="channel ch3"><i></i><b>C3</b></div></div>
 <div class="wire"><span></span></div>
 <div class="coeffs" aria-label="Packed coefficients for three output positions"><div><i class="ch0"></i><i class="ch1"></i><i class="ch2"></i><i class="ch3"></i></div><div><i class="ch0"></i><i class="ch1"></i><i class="ch2"></i><i class="ch3"></i></div><div><i class="ch0"></i><i class="ch1"></i><i class="ch2"></i><i class="ch3"></i></div></div>
 <p>One ciphertext, with four adjacent channel coefficients per spatial position.</p>
-</figure>
-</section>
-<section id="demo" aria-labelledby="demo-title">
-<div class="section-title"><h2 id="demo-title">Private inference, side by side</h2><span class="meta">Recorded replay · 5× speed</span></div>
-<p class="lead">Two parties classify the same four photos with ResNet-18. Each tile appears when that image’s secure inference finishes.</p>
-<figure class="player">
-<video controls playsinline muted preload="metadata" poster="media/replay-poster.jpg" aria-label="Side-by-side ResNet-18 timing replay at five times speed" aria-describedby="timing"><source src="media/rn18-replay.mp4" type="video/mp4">Your browser can play the <a href="media/rn18-replay.gif">animated GIF</a>.</video>
-<figcaption id="timing">SEC-PPDL on CPU · Exact W4A8 inference · 16 threads per party · LAN at 3,072 Mbit/s per direction, 0.3 ms RTT.</figcaption>
-</figure>
-<details><summary>Timing, image credits and downloads</summary><div class="details-content">
-<p>The two protocols ran separately on the same AMD EPYC 9J14 host. Both clocks start at zero in the replay. The four inferences total 297.74 seconds for Cheetah and 38.40 seconds for OptiPrime. Tile labels show the model’s predictions. Each completion includes online inference through secure argmax and any per-image preprocessing. Model setup, key exchange and opening the outputs for verification are outside the timers. The replay uses the per-image measurements at one fifth of their recorded duration.</p>
-<div class="table-wrap"><table><caption>Time per encrypted image in seconds, before playback acceleration</caption><thead><tr><th scope="col">Input photo</th><th scope="col">Cheetah</th><th scope="col">OptiPrime</th></tr></thead><tbody><tr><th scope="row">Chelsea the cat</th><td>74.99</td><td>9.18</td></tr><tr><th scope="row">Coffee</th><td>74.23</td><td>10.89</td></tr><tr><th scope="row">Rocket launch</th><td>73.52</td><td>10.68</td></tr><tr><th scope="row">Camera</th><td>74.99</td><td>7.64</td></tr><tr><th scope="row">All four</th><td>297.74</td><td>38.40</td></tr></tbody></table></div>
-<p>Cheetah uses online IKNP and a 60-bit work ring. OptiPrime uses OptiEncode with compact ciphertext output, preprocessed Ferret OT and a 20-bit work ring. Both use the same quantized weights and exact nonlinear operators. These four photos illustrate latency. Classification accuracy is evaluated separately on ImageNetV2.</p>
-<p>Photos from scikit-image: Chelsea by Stefan van der Walt, camera by Lav Varshney, coffee by Rachel Michetti, and the rocket launch by SpaceX. <a href="https://scikit-image.org/docs/stable/api/skimage.data.html">Image credits</a> · <a href="media/rn18-replay.gif">Animated GIF</a> · <a href="media/rn18-replay.mp4">MP4</a> · <a href="replay.json">Recorded timings</a></p>
-</div></details>
-</section>
-<section class="research" id="results"><div><p class="eyebrow">MICRO 2026</p><h2>What the paper shows</h2><p>Sending encrypted convolution outputs can dominate private inference latency. OptiEncode packs output channels into fewer ciphertexts. OptiPrime combines this encoding with weight compression and a dataflow that reuses ciphertexts on the accelerator.</p><a href="https://arxiv.org/html/2609.16898v1#S5">Evaluation in the paper</a></div>
-<div class="numbers"><div><strong>5.7×</strong><span>Maximum CPU speedup<br>over Cheetah</span></div><div><strong>4.2×</strong><span>Maximum HE accelerator speedup<br>over Cheetah</span></div></div>
-</section>
-<section class="integration"><h2>Inside SEC-PPDL</h2><p>The CPU and GPU operators are available in SEC-PPDL. The experiment guide covers model export, exact and approximate inference, and comparison against an integer reference.</p>
-<div class="resources"><a href="https://github.com/JerryFishY/SEC-PPDL/blob/b986671362e8e6e244ca80a81a0ba6fbccf1c976/Experiments/OptiPrime/README.md">Run the experiments</a><a href="https://github.com/JerryFishY/OptiPrime/blob/main/results/sec-ppdl.md">Latency, traffic and accuracy</a><a href="https://github.com/JerryFishY/SEC-PPDL/blob/b986671362e8e6e244ca80a81a0ba6fbccf1c976/Layer/LinearLayer/include/LinearLayer/ConvOptiEncode.h">C++ operator interface</a></div>
-</section>
-<section class="citation" id="citation"><div class="section-title"><h2>Cite OptiPrime</h2><a href="https://github.com/JerryFishY/OptiPrime/blob/main/CITATION.cff">Citation file</a></div><pre><code>@inproceedings{yu2026optiprime,
+</figure></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="citation">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title" id="BibTeX">BibTeX</h2>
+        <button type="button" class="copy-bibtex-btn" id="copy-bibtex" aria-live="polite">Copy BibTeX</button>
+      </div>
+      <pre id="bibtex-code"><code>@inproceedings{yu2026optiprime,
   title={{OptiPrime}: Optimizing Private Inference through Protocol-Hardware Co-design},
   author={Yu, Jiangrui and Yu, Ye and Chen, Si and Lin, Chenqi and Zeng, Wenxuan and Fan, Junfeng and Gao, Mingyu and Li, Meng},
   booktitle={Proceedings of the 59th IEEE/ACM International Symposium on Microarchitecture (MICRO)},
   year={2026},
   url={https://arxiv.org/abs/2609.16898}
-}</code></pre></section>
+}</code></pre>
+      <a href="https://github.com/JerryFishY/OptiPrime/blob/main/CITATION.cff">Download citation metadata</a>
+    </div>
+  </section>
 </main>
-<footer><div class="wrap"><span>OptiPrime · MICRO 2026</span><a href="https://jerryfishy.github.io/">Jiangrui Yu’s homepage</a></div></footer>
-<script>
-const video = document.querySelector('video');
-if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const observer = new IntersectionObserver(entries => {
-    if (entries.some(entry => entry.isIntersecting)) {
-      observer.disconnect();
-      video.play().catch(() => {});
-    }
-  }, {threshold: 0.65});
-  observer.observe(video);
-}
-</script>
+<footer class="footer">
+  <div class="container"><div class="columns is-centered"><div class="column is-8 content has-text-centered">
+    <p><a href="https://jerryfishy.github.io/">Jiangrui Yu’s homepage</a> · <a href="https://github.com/JerryFishY/OptiPrime">OptiPrime on GitHub</a></p>
+    <p>Page layout adapted from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template/tree/d38af1ccae1ce82c3404d2820c4c646afd409f81">Academic Project Page Template</a>
+    and <a href="https://nerfies.github.io/">Nerfies</a>, licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+    Icons by <a href="https://fontawesome.com/">Font Awesome Free</a> (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</p>
+  </div></div></div>
+</footer>
 </body>
 </html>
