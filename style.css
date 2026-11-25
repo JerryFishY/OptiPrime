@@ -23,25 +23,49 @@ body, .teaser { font-family: "Noto Sans", sans-serif; }
 }
 a { color: var(--primary-color); }
 .publication-links img { filter: invert(1); }
-#replay { display: block; width: 100%; aspect-ratio: 2.4; border-radius: var(--border-radius); }
-.teaser .subtitle { margin: 1rem auto .65rem; line-height: 1.5; }
-.run-settings { color: #4e5560; font-size: .95rem; }
-details { margin: 1rem 0; }
-summary { color: var(--primary-color); cursor: pointer; }
-.details-content p { margin: .9rem 0; }
-.table-wrap { overflow-x: auto; }
-.table caption { text-align: left; font-weight: 600; }
-.table td { font-variant-numeric: tabular-nums; }
-.footer p { font-size: .95rem; }
-pre#bibtex-code { white-space: pre-wrap; overflow-wrap: anywhere; }
-@media (max-width: 768px) {
-  h1.publication-title { font-size: 2.15rem !important; }
-  .teaser .hero-body { padding-top: 0; }
-}
 
-.affiliations { margin: -0.6rem auto 1.25rem; font-family: "Google Sans", sans-serif; }
+.paper-section { padding: 2.5rem clamp(1rem, 4vw, 2.5rem); }
+.paper-width { max-width: 60rem; width: 100%; min-width: 0; margin-inline: auto; }
+.paper-header { padding-top: 3rem; padding-bottom: 1rem; }
+.paper-section .title.is-3 { padding-bottom: 0; }
+.paper-section .title.is-3::after { display: none; }
+.publication-authors, .publication-title { overflow-wrap: break-word; }
+.affiliations { margin: -.6rem auto 1.25rem; font-family: "Google Sans", sans-serif; }
 .affiliations span { display: inline-block; margin: 0 .45rem; }
 .affiliations small { display: block; margin-top: .3rem; }
-#demo { padding-inline: 1.5rem; }
-#demo > .container { width: 100%; }
-#demo .hero-body { padding-inline: 0; }
+.replay-switch { display: flex; justify-content: center; gap: .4rem; margin-bottom: 1rem; }
+.replay-switch button { cursor: pointer; font: inherit; border-radius: 999px; border: 1px solid #c9c5c6; background: #fff; color: #464248; padding: .3rem 1rem; }
+.replay-switch button[aria-pressed="true"] { color: white; background: #712138; border-color: #712138; }
+#replay { display: block; width: 100%; aspect-ratio: 1200/746; background: #faf9f8; border-radius: .5rem; }
+.measurement-caption, #traffic-caption { margin: .8rem 0; font-size: 1rem; text-align: center; }
+#abstract { background: #f8f8f8; }
+.chart-legend { display: flex; justify-content: center; gap: 1.5rem; margin: 1.2rem 0; }
+.baseline { --bar-color: #46556a; }
+.optiprime { --bar-color: #8c1732; }
+.chart-legend span::before { content: ""; display: inline-block; width: .9em; height: .65em; margin-right: .4em; background: var(--bar-color); }
+.traffic-chart { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: .65rem; margin: 1.8rem 0 0; list-style: none; font-variant-numeric: tabular-nums; }
+.traffic-chart li { text-align: center; min-width: 0; }
+.bar-pair { display: flex; align-items: flex-end; justify-content: center; gap: .45rem; height: 11rem; border-bottom: 1px solid #b9b5b6; margin-bottom: .6rem; }
+.bar-slot { flex: 0 1 2.5rem; height: var(--height); position: relative; }
+.bar { display: block; width: 100%; height: 100%; background: var(--bar-color); border-radius: .18rem .18rem 0 0; transform-origin: center bottom; }
+.bar-value { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); font-size: .78rem; color: #38353a; }
+.traffic-chart strong, .reduction { display: block; }
+.traffic-chart strong { font-size: .95rem; }
+.reduction { color: #76223b; font-size: .88rem; }
+@media (max-width: 680px) {
+  .traffic-chart { grid-template-columns: repeat(3,minmax(0,1fr)); row-gap: 1.8rem; }
+  .bar-pair { height: 7rem; gap: .35rem; }
+  .bar-slot { flex-basis: 2rem; }
+}
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (prefers-reduced-motion: no-preference) {
+  .traffic-chart li.waiting .bar { transform: scaleY(0); }
+  .traffic-chart .bar { transition: transform .75s ease-out; }
+}
+pre#bibtex-code { white-space: pre-wrap; overflow-wrap: anywhere; }
+@media (max-width: 768px) {
+  .paper-section { padding-block: 1.8rem; }
+  h1.publication-title { font-size: 2.15rem !important; }
+}
+
+#replay.four-image-replay { aspect-ratio: 2.4; }
