@@ -47,8 +47,8 @@ a { color: var(--primary-color); }
 .measurement-caption, #traffic-caption { margin: .8rem 0; font-size: 1rem; text-align: center; }
 #abstract { background: #f8f8f8; }
 .chart-legend { display: flex; justify-content: center; gap: 1.5rem; margin: 1.2rem 0; }
-.baseline { --bar-color: #46556a; }
-.optiprime { --bar-color: #8c1732; }
+.baseline { --bar-color: #bdbdbd; }
+.optiprime { --bar-color: var(--primary-color); }
 .chart-legend span::before { content: ""; display: inline-block; width: .9em; height: .65em; margin-right: .4em; background: var(--bar-color); }
 .traffic-chart { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: .65rem; margin: 1.8rem 0 0; list-style: none; font-variant-numeric: tabular-nums; }
 .traffic-chart li { text-align: center; min-width: 0; }
@@ -58,7 +58,7 @@ a { color: var(--primary-color); }
 .bar-value { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); font-size: .78rem; color: #38353a; }
 .traffic-chart strong, .reduction { display: block; }
 .traffic-chart strong { font-size: .95rem; }
-.reduction { color: #76223b; font-size: .88rem; }
+.reduction { margin-bottom: 1.65rem; color: var(--primary-color); font-size: .88rem; font-weight: 700; }
 @media (max-width: 680px) {
   .traffic-chart { grid-template-columns: repeat(3,minmax(0,1fr)); row-gap: 1.8rem; }
   .bar-pair { height: 7rem; gap: .35rem; }
