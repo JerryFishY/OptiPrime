@@ -45,7 +45,7 @@
                   </a>
                 </span>
                 <span class="link-block">
-                  <a class="external-link button is-normal is-rounded is-dark" href="https://github.com/JerryFishY/OptiPrime">
+                  <a class="external-link button is-normal is-rounded is-dark" href="https://github.com/Tianshi-Xu/SEC-PPDL">
                     <span class="icon"><img src="static/icons/github.svg" width="16" height="16" alt=""></span>
                     <span>Code</span>
                   </a>
@@ -59,14 +59,13 @@
                 <span class="link-block">
                   <a class="external-link button is-normal is-rounded is-dark" href="#communication">
                     <span class="icon"><img src="static/icons/chart-bar.svg" width="16" height="16" alt=""></span>
-                    <span>Communication</span>
+                    <span>Network Communication Reduction</span>
                   </a>
                 </span>
               </div>
   </div></header>
-  <section class="paper-section" id="demo" aria-labelledby="demo-title">
+  <section class="paper-section" id="demo" aria-label="Encrypted ResNet-18 inference replays">
     <div class="paper-width">
-      <h2 id="demo-title" class="title is-3 has-text-centered">Demo</h2>
       <div class="replay-switch" role="group" aria-label="Network profile">
         <button type="button" data-network="lan" aria-pressed="true">LAN</button>
         <button type="button" data-network="wan" aria-pressed="false">WAN</button>
@@ -74,7 +73,7 @@
       <video id="replay" controls playsinline muted preload="metadata" poster="media/lan-poster.jpg" aria-describedby="replay-caption">
         <source src="media/lan-rn18.mp4" type="video/mp4">
       </video>
-      <p class="measurement-caption" id="replay-caption">16 ImageNetV2 images · 16 CPU threads per party · 5× playback<br>
+      <p class="measurement-caption" id="replay-caption">16 ImageNetV2 images · 16 CPU threads per party · 10× playback<br>
         <span id="network-setting">LAN · 3,072 Mbit/s per direction · 0.3 ms RTT</span></p>
       <noscript><a href="media/wan-rn18.mp4">Watch the WAN replay</a></noscript>
     </div>
@@ -87,7 +86,7 @@
           </div>
   </div></section>
   <section class="paper-section" id="communication" aria-labelledby="results"><div class="paper-width">
-    <h2 id="results" class="title is-3 has-text-centered">Communication</h2>
+    <h2 id="results" class="title is-3 has-text-centered">Network Communication Reduction</h2>
     <figure aria-describedby="traffic-caption">
       <figcaption id="traffic-caption"><a href="https://github.com/JerryFishY/OptiPrime/blob/main/results/communication.md">Measured traffic per inference</a>, including OT preprocessing (GB). Heights are relative to Cheetah within each model.</figcaption>
       <div class="chart-legend"><span class="baseline">Cheetah</span><span class="optiprime">OptiPrime</span></div>
