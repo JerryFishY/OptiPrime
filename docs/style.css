@@ -33,6 +33,13 @@ a { color: var(--primary-color); }
 .affiliations { margin: -.6rem auto 1.25rem; font-family: "Google Sans", sans-serif; }
 .affiliations span { display: inline-block; margin: 0 .45rem; }
 .affiliations small { display: block; margin-top: .3rem; }
+@font-face {
+  font-family: "Comic Relief";
+  font-weight: 700;
+  font-display: swap;
+  src: url("static/fonts/comic-relief-bold-latin.woff2") format("woff2");
+}
+#demo { font-family: "Comic Relief", sans-serif; font-weight: 700; }
 .replay-switch { display: flex; justify-content: center; gap: .4rem; margin-bottom: 1rem; }
 .replay-switch button { cursor: pointer; font: inherit; border-radius: 999px; border: 1px solid #c9c5c6; background: #fff; color: #464248; padding: .3rem 1rem; }
 .replay-switch button[aria-pressed="true"] { color: white; background: #712138; border-color: #712138; }
