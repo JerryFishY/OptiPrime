@@ -38,3 +38,10 @@ pre#bibtex-code { white-space: pre-wrap; overflow-wrap: anywhere; }
   h1.publication-title { font-size: 2.15rem !important; }
   .teaser .hero-body { padding-top: 0; }
 }
+
+.affiliations { margin: -0.6rem auto 1.25rem; font-family: "Google Sans", sans-serif; }
+.affiliations span { display: inline-block; margin: 0 .45rem; }
+.affiliations small { display: block; margin-top: .3rem; }
+#demo { padding-inline: 1.5rem; }
+#demo > .container { width: 100%; }
+#demo .hero-body { padding-inline: 0; }
