@@ -1,0 +1,64 @@
+{
+  "model": "ResNet-18 W4A8 (FC W8)",
+  "sec_ppdl_revision": "b986671362e8e6e244ca80a81a0ba6fbccf1c976",
+  "cpu": "AMD EPYC 9J14",
+  "threads_per_party": 16,
+  "mbit_s_per_direction": 3072,
+  "rtt_ms": 0.3,
+  "playback_speed": 5,
+  "time_scope": "Online time through secure argmax plus the reported per-image preprocessing interval. Excludes one-time setup and opening outputs for verification.",
+  "images": [
+    {
+      "photo": "Chelsea the cat",
+      "predicted_class": "Egyptian cat"
+    },
+    {
+      "photo": "Coffee",
+      "predicted_class": "espresso"
+    },
+    {
+      "photo": "Rocket launch",
+      "predicted_class": "obelisk"
+    },
+    {
+      "photo": "Camera",
+      "predicted_class": "tripod"
+    }
+  ],
+  "cheetah": [
+    {
+      "online_s": 74.9929,
+      "preprocessing_s": 0.000639421
+    },
+    {
+      "online_s": 74.2269,
+      "preprocessing_s": 0.000327368
+    },
+    {
+      "online_s": 73.5202,
+      "preprocessing_s": 0.000364846
+    },
+    {
+      "online_s": 74.9936,
+      "preprocessing_s": 0.000376287
+    }
+  ],
+  "optiprime": [
+    {
+      "online_s": 5.60335,
+      "preprocessing_s": 3.57838
+    },
+    {
+      "online_s": 5.32448,
+      "preprocessing_s": 5.56933
+    },
+    {
+      "online_s": 5.00371,
+      "preprocessing_s": 5.67675
+    },
+    {
+      "online_s": 5.11395,
+      "preprocessing_s": 2.53008
+    }
+  ]
+}

@@ -6,7 +6,15 @@ Jiangrui Yu, Ye Yu, Si Chen, Chenqi Lin, Wenxuan Zeng, Junfeng Fan, Mingyu Gao, 
 
 MICRO 2026
 
+[Project page](https://jerryfishy.github.io/OptiPrime/) · [Watch the recorded demo](https://jerryfishy.github.io/OptiPrime/#demo) · [Paper](https://arxiv.org/abs/2609.16898)
+
 OptiPrime introduces OptiEncode, a homomorphic convolution protocol that packs output channels to reduce ciphertext communication during private inference. The CPU and GPU implementations are integrated into SEC-PPDL. [Paper](https://arxiv.org/abs/2609.16898) · [Implementation][implementation] · [Experiment guide][experiments]
+
+## Encrypted ResNet-18 in motion
+
+[![Recorded 5× replay of Cheetah and OptiPrime finishing the same four photos](docs/media/rn18-replay.gif)](https://jerryfishy.github.io/OptiPrime/#demo)
+
+Both sides use the exact W4A8 model on CPU. Each photo appears at its measured completion time, including per-image preprocessing. Playback runs at **5×** on both sides. [Watch with playback controls](https://jerryfishy.github.io/OptiPrime/#demo) · [Timing records](docs/replay.json)
 
 ## Results reported in the paper
 
